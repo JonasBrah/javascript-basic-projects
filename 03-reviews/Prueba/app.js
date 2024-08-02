@@ -1,4 +1,3 @@
-// local reviews data
 const reviews = [
   {
     id: 1,
@@ -29,52 +28,52 @@ const reviews = [
     text: 'Edison bulb put a bird on it humblebrag, marfa pok pok heirloom fashion axe cray stumptown venmo actually seitan. VHS farm-to-table schlitz, edison bulb pop-up 3 wolf moon tote bag street art shabby chic. ',
   },
 ];
-// select items
+
+
 const img=document.getElementById("person-img");
 const author=document.getElementById("author");
 const job=document.getElementById("job");
-const info=document.getElementById("info");
+const text=document.getElementById("info");
 
-const prevBtn= document.querySelector(".prev-btn");
-const nextBtn= document.querySelector(".next-btn");
-const randomBtn= document.querySelector(".random-btn");
+const prevbtn=document.querySelector(".prev-btn");
+const nextbtn=document.querySelector(".next-btn");
+const randbtn=document.querySelector(".random-btn");
 
-// set starting item
-let currentItem=0;
-// load initial item
-window.addEventListener("DOMContentLoaded",function(){ //se activa cuando se carga completamente la pagina
-showPerson(currentItem);
-})
+let a=2;
 
-//show person based on item
+console.log(prevbtn);
+
+
 function showPerson(person){
   const item=reviews[person];
-  img.src=item.img
+
+  img.src=item.img;
   author.textContent=item.name;
   job.textContent=item.job;
-  info.textContent=item.text;
+  text.textContent=item.text;
+  
+  
 }
 
-// show next person
-
-nextBtn.addEventListener("click",function(){
-  currentItem++;
-  if (currentItem>reviews.length -1){
-    currentItem=0;
-  }
-  showPerson(currentItem);
-});
-
-prevBtn.addEventListener("click",function(){
-  currentItem--;
-  if (currentItem<reviews.length -4){
-    currentItem=3;
-  }
-  showPerson(currentItem);
-});
-
-randomBtn.addEventListener("click", function(){
-  const rando=Math.floor(Math.random()*reviews.length);
-  console.log(rando);
-  showPerson(rando);
+prevbtn.addEventListener("click", function(){
+a--;
+if(a<reviews.length-3){
+  a=3;
+}
+showPerson(a);
 })
+
+nextbtn.addEventListener("click", function(){
+  a++;
+  if(a>reviews.length-1){
+    a=0;
+  }
+  showPerson(a);
+  })
+
+  randbtn.addEventListener("click", function(){
+    const b=Math.floor(Math.random()*reviews.length);
+    showPerson(b);
+  })
+  
+
